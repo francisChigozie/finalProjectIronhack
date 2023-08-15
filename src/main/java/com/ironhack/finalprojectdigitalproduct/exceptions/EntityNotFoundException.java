@@ -1,0 +1,7 @@
+package com.ironhack.finalprojectdigitalproduct.exceptions;
+
+public class EntityNotFoundException extends RuntimeException {
+    public EntityNotFoundException(String message) {
+        super(message);
+    }
+}
