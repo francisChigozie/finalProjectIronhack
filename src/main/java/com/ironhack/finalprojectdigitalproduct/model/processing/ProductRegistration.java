@@ -17,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ProductRegistration {
     private UUID id;
-    @Column(name = "release_date")
+
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
 }

@@ -1,6 +1,7 @@
 package com.ironhack.finalprojectdigitalproduct.model.products;
 
 
+import com.ironhack.finalprojectdigitalproduct.dto.reviewOnlyDto.ReviewDTO;
 import com.ironhack.finalprojectdigitalproduct.model.processing.BaseEntity;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import jakarta.persistence.*;
@@ -14,7 +15,6 @@ import org.hibernate.annotations.DynamicUpdate;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -22,7 +22,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "product_type")
-//@MappedSuperclass
 public class Product extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -47,16 +46,13 @@ public class Product extends BaseEntity {
     @Digits(fraction = 0, integer = 2)
     private Integer inventory;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Column(insertable=false, updatable=false)
-    @JoinTable(
-            name = "product_reviews",
-            joinColumns = @JoinColumn(name = "review_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, orphanRemoval = true,
+            fetch = FetchType.LAZY)
     private List<Review> reviews = new ArrayList<>();
 
     public void addReview(Review review){
         reviews.add(review);
+        review.setProduct(this);
     }
 
 
