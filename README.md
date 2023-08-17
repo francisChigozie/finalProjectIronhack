@@ -50,26 +50,29 @@
 ### Controllers and Routes structure
 
 - *BookController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/BookController.java)
+---
 
-Endpoint: **api/v1/books**
-Method : **POST**
-Body : JSON Object of Book.
+**Endpoint:** `api/vi/books`  
+**Method:** `POST`  
+**Body:** JSON object of Book.
 
-Request Format :
- {
- "name" : " String ",
- "description" : " String ",
- "productNumber" : " String ",
- "price" : BigDecimal,
- "inventory" : " String ",
- "review" : [
- {
- "comments" : " String ",
- "ratings" : " int ",
-    }
-   ]
- }
+**Request Format:**
 
+```json
+{
+  "name": " String ",
+  "description": " String ",
+  "productNumber": " String ",
+  "price":  BigDecimal,
+  "inventory":  int,
+  "review": [
+{
+  "comments": " String ",
+  "ratings": int 
+}
+ ] 
+}
+```
 
 ### Extra links
 
