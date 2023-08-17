@@ -135,9 +135,9 @@
 
 **Endpoint:** `/api/v1/customer/{id}`  
 **Method:** `DELETE`  
-```
 
----
+
+```
 - *BookController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/BookController.java)
 ---
 ### **Creating a New Book**
