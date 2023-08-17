@@ -322,7 +322,6 @@
 ```
 
 ---
----
 - *GameController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/GameController.java)
 ---
 ### **Creating a New Game**
