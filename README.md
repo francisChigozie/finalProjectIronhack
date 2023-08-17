@@ -136,7 +136,7 @@
 **Endpoint:** `/api/v1/customer/{id}`  
 **Method:** `DELETE`  
 
-```
+---
 
 
 ```
