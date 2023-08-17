@@ -48,6 +48,94 @@
 - Spring Project Lombok.
 
 ### Controllers and Routes structure
+- *CustomerController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/CustomerController.java)
+---
+### **Creating a New Customer**
+
+**Endpoint:** `/api/v1/register`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "userName": " John Doe ",
+  "email": " johndoe@gmail.com ",
+  "birthdate": " 19-10-2010",
+  "sex": "Female",
+  "selectCoins":  200,
+  "password": "123456",
+  "rePassword": "12345",
+  "currentAddress": [
+ { "streetAddress" :"Tom Avenue",
+    "city": "Berlin",
+    " postal": "23456"
+ }
+   ]
+  "minimumOrderValue": 12.50,
+  "role": "Administration"
+}
+```
+
+### **Finding All Customers**
+
+**Endpoint:** `/api/v1/customers`  
+**Method:** `GET`  
+
+### **Find One Customer**
+
+**Endpoint:** `/api/v1/customer/{id}`  
+**Method:** `GET`  
+
+### **Updating a Customer**
+
+**Endpoint:** `/api/v1/customer/{id}`  
+**Method:** `PUT`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "userName": " John Doe ",
+  "email": " johndoe@gmail.com ",
+ "currentAddress": [
+ { "streetAddress" :"Tom Avenue",
+    "city": "Berlin",
+    " postal": "23456"
+ }
+   ]
+}
+```
+
+### **Updating Email Only of the Customer**
+
+**Endpoint:** `/api/v1/customer/{id}`  
+**Method:** `PATCH`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "email": "doe@gmail.com"
+}
+```
+### **Deleting a Customer**
+
+**Endpoint:** `/api/v1/customer/{id}`  
+**Method:** `DELETE`  
+```
 
 - *BookController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/BookController.java)
 ---
@@ -140,6 +228,7 @@
 
 ```json
 {
+  "userName":" John Doe",
   "comments": "An Interesting Book to read",
   "ratings": 4
 }
@@ -220,6 +309,7 @@
 
 ```json
 {
+  "userName":" Felix Oti",
   "comments": "Best before",
   "ratings": 4
 }
@@ -316,6 +406,7 @@
 
 ```json
 {
+  "userName":" Jane Doe",
   "comments": "One of the best of all times",
   "ratings": 5
 }
@@ -412,6 +503,7 @@
 
 ```json
 {
+  "userName":" Jonathan Kings",
   "comments": "Very entertaining",
   "ratings": 3
 }
@@ -508,6 +600,7 @@
 
 ```json
 {
+  "userName":" Silace Kingibe",
   "comments": "Recommended for children during bed times",
   "ratings": 4
 }
@@ -532,6 +625,18 @@
 - Profile Picture upload by the User.
 
 ### Resources
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/db_digitalproducts
+spring.datasource.username=ironhacker
+spring.datasource.password=1r0nh4ck3r
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+#just for learning / developing
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+spring.profiles.active=dev
+```
 
 ### Team Members
 
