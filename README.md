@@ -69,12 +69,7 @@
   "productNumber": " String ",
   "price":  BigDecimal,
   "inventory":  int,
-  "review": [
-{
-  "comments": " String ",
-  "ratings": int 
-}
- ] 
+  "review": [] 
 }
 ```
 
@@ -88,6 +83,66 @@
 **Endpoint:** `/api/v1/book/{id}`  
 **Method:** `GET`  
 
+### **Updating a Book**
+
+**Endpoint:** `/api/v1/book/{id}`  
+**Method:** `PUT`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "name": " String ",
+  "description": " String ",
+  "productNumber": " String ",
+  "price": BigDecimal,
+  "inventory":  int,
+  "review": [] 
+}
+```
+
+### **Updating Price Only of the Book**
+
+**Endpoint:** `/api/v1/book/{id}`  
+**Method:** `PATCH`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "price":  BigDecimal
+}
+```
+### **Deleting a Book**
+
+**Endpoint:** `/api/v1/book/{id}`  
+**Method:** `DELETE`  
+
+### **Adding Review To Book**
+
+**Endpoint:** `/api/v1/book/{id}/reviews`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "comments": "An Interesting Book to read",
+  "ratings": 4
+}
+```
 
 ---
 
