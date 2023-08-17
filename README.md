@@ -54,7 +54,7 @@
 
 **Endpoint:** `api/vi/book`  
 ```
-**Method:** `POST - creates a new book into the database.` 
+**Method:** `POST` 
 ```
 **Body:** JSON object of Book.
 ```
@@ -79,7 +79,7 @@
 
 **Endpoint:** `api/vi/books`  
 ```
-**Method:** `GET - gets all the books in the database.` 
+**Method:** `GET` 
 ```
 **Body:** Not needed.
 ```
@@ -87,15 +87,13 @@
 ```
 **Endpoint:** `api/vi/book/{id}`  
 ```
-**Method:** `GET - gets a single book from the database.` 
+**Method:** `GET` 
 ```
 **Body:** Not needed.
 ```
 
-```
 
-
-### Extra links
+### **Extra links**
 
 [Final Project Manangement Account](https://trello.com/b/SxxrLFZ9/digital-products)
 
