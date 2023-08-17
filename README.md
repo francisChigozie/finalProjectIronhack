@@ -54,7 +54,7 @@
 
 **Endpoint:** `api/vi/book`  
 ```
-**Method:** `POST` creates a new book into the database.
+**Method:** `POST - creates a new book into the database.` 
 ```
 **Body:** JSON object of Book.
 ```
@@ -79,29 +79,20 @@
 
 **Endpoint:** `api/vi/books`  
 ```
-**Method:** `GET` gets all the books in the database
+**Method:** `GET - gets all the books in the database.` 
 ```
 **Body:** Not needed.
 ```
-
-**Request Format:**
-
-```json
 
 ```
 **Endpoint:** `api/vi/book/{id}`  
 ```
-**Method:** `GET` gets a single book from the database.
+**Method:** `GET - gets a single book from the database.` 
 ```
 **Body:** Not needed.
 ```
 
-**Request Format:**
-
-```json
-
 ```
-
 
 
 ### Extra links
