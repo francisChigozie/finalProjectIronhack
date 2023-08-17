@@ -52,9 +52,9 @@
 - *BookController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/BookController.java)
 ---
 
-**Endpoint:** `api/vi/books`  
+**Endpoint:** `api/vi/book`  
 ```
-**Method:** `POST`
+**Method:** `POST` creates a new book into the database.
 ```
 **Body:** JSON object of Book.
 ```
@@ -77,33 +77,31 @@
 }
 ```
 
-## **User and Role Management Documentation**
-
----
-
-### **Prerequisites**
-
-- Ensure you have a REST client like Postman or CURL to interact with the API.
-- Have the API server running.
-
----
-
-### **1. Obtain a JWT Token**
-
-**Endpoint:** `api/login`  
-**Method:** `POST`  
-**Body:** JSON object containing your credentials.
+**Endpoint:** `api/vi/books`  
+```
+**Method:** `GET` gets all the books in the database
+```
+**Body:** Not needed.
+```
 
 **Request Format:**
 
 ```json
-{
-  "username": "your_username",
-  "password": "your_password"
-}
+
+```
+**Endpoint:** `api/vi/book/{id}`  
+```
+**Method:** `GET` gets a single book from the database.
+```
+**Body:** Not needed.
 ```
 
-**Steps:**
+**Request Format:**
+
+```json
+
+```
+
 
 
 ### Extra links
