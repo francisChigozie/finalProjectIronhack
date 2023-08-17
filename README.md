@@ -51,15 +51,16 @@
 
 - *BookController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/BookController.java)
 ---
+### **Creating a New Book**
 
-**Endpoint:** `api/vi/book`  
-```
-**Method:** `POST` 
-```
-**Body:** JSON object of Book.
-```
+**Endpoint:** `/api/v1/books`  
+**Method:** `POST`  
+**Headers:**
 
-**Request Format:**
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
 
 ```json
 {
@@ -77,8 +78,15 @@
 }
 ```
 
+**Steps:**
 
-### **Extra links **
+1. Send a POST request to `/api/v1/books` with the provided JSON body.
+
+---
+
+
+
+### Extra links 
 
 [Final Project Manangement Account](https://trello.com/b/SxxrLFZ9/digital-products)
 
