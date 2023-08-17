@@ -25,7 +25,7 @@
 
 ### Setup
 - Create the Spring Boot final Project called Digital Products.
-- Define Database Configurations.
+- Define Database Configurations
 - Create an Entity Class.
 - Create JPA Data Repository Layer.
 - Create RestController and map API Requests.
