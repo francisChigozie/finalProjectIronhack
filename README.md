@@ -146,6 +146,376 @@
 ```
 
 ---
+- *FilmController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/FilmController.java)
+---
+### **Creating a New Film**
+
+**Endpoint:** `/api/v1/films`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "name": " Coming To America ",
+  "description": " Cultural Comedian  ",
+  "productNumber": " COMED - 25 ",
+  "price":  12.00,
+  "inventory":  12,
+  "review": [] ,
+  "director": "Eddie Morphy"
+}
+```
+
+### **Finding All Films**
+
+**Endpoint:** `/api/v1/films`  
+**Method:** `GET`  
+
+### **Find One Film**
+
+**Endpoint:** `/api/v1/film/{id}`  
+**Method:** `GET`  
+
+### **Updating a Film**
+
+**Endpoint:** `/api/v1/film/{id}`  
+**Method:** `PUT`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+ "name": " Coming To America ",
+  "description": " First American Impressions  ",
+  "productNumber": " COMED - 25 ",
+  "price":  12.00,
+  "inventory":  24
+}
+```
+
+### **Deleting a Book**
+
+**Endpoint:** `/api/v1/book/{id}`  
+**Method:** `DELETE`  
+
+### **Adding Review To Film**
+
+**Endpoint:** `/api/v1/book/{id}/reviews`  
+**Method:** `PUT`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "comments": "Best before",
+  "ratings": 4
+}
+```
+
+---
+- *MusicProductController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/MusicProductController.java)
+---
+### **Creating a New Music Product**
+
+**Endpoint:** `/api/v1/musicProducts`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "name": " We Are The World ",
+  "description": " Freedom Songs and Unity  ",
+  "productNumber": " MUSiC - 01 ",
+  "price":  25.45,
+  "inventory":  40,
+  "review": [] ,
+  "performer": "Mecheal Jackson"
+}
+```
+
+### **Finding All Music Products**
+
+**Endpoint:** `/api/v1/musicProducts`  
+**Method:** `GET`  
+
+### **Find One Music Product**
+
+**Endpoint:** `/api/v1/musicProduct/{id}`  
+**Method:** `GET`  
+
+### **Updating a Music Product**
+
+**Endpoint:** `/api/v1/musicProduct/{id}`  
+**Method:** `PUT`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+   "name": " We Are The World ",
+  "description": " Freedom Songs and Unity  ",
+  "productNumber": " MUSiC - 01 ",
+  "price":  25.45,
+  "inventory":  40
+}
+```
+
+### **Updating Only the Performer in the Music Product**
+
+**Endpoint:** `/api/v1/musicProduct/{id}`  
+**Method:** `PATCH`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "performer":  "World Performers"
+}
+```
+### **Deleting a Music Product**
+
+**Endpoint:** `/api/v1/musicProduct/{id}`  
+**Method:** `DELETE`  
+
+### **Adding Review To Music Product**
+
+**Endpoint:** `/api/v1/musicProduct/{id}/reviews`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "comments": "One of the best of all times",
+  "ratings": 5
+}
+```
+
+---
+---
+- *GameController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/GameController.java)
+---
+### **Creating a New Game**
+
+**Endpoint:** `/api/v1/games`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "name": " Super Mario 2 ",
+  "description": " Car Racing Tournaments  ",
+  "productNumber": " GM - 22 ",
+  "price":  25.45,
+  "inventory":  45,
+  "review": [] ,
+  "author": "Nitendo Production"
+}
+```
+
+### **Finding All Games**
+
+**Endpoint:** `/api/v1/games`  
+**Method:** `GET`  
+
+### **Find One Game**
+
+**Endpoint:** `/api/v1/game/{id}`  
+**Method:** `GET`  
+
+### **Updating a Game**
+
+**Endpoint:** `/api/v1/game/{id}`  
+**Method:** `PUT`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "name": " Super Mario 10 ",
+  "description": " Car Racing Editions  ",
+  "productNumber": " GM - 25 ",
+  "price":  45.45,
+  "inventory":  42
+}
+```
+
+### **Updating Only the Author of The Game**
+
+**Endpoint:** `/api/v1/game/{id}`  
+**Method:** `PATCH`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "author":  "Sony Play Stations"
+}
+```
+### **Deleting a Game**
+
+**Endpoint:** `/api/v1/game/{id}`  
+**Method:** `DELETE`  
+
+### **Adding Review To The Game**
+
+**Endpoint:** `/api/v1/game/{id}/reviews`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "comments": "Very entertaining",
+  "ratings": 3
+}
+```
+
+---
+- *NonFictionBookController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/NonFictionBookController.java)
+---
+### **Creating a New Non Fiction Book**
+
+**Endpoint:** `/api/v1/nonFictionBooks`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "name": " Alice In Wonder Land ",
+  "description": " A Real Life Story  ",
+  "productNumber": " N-Fiction - 22 ",
+  "price":  25.45,
+  "inventory":  45,
+  "review": [] ,
+  "subject": "Adams Smith"
+}
+```
+
+### **Finding All Non Fiction Books**
+
+**Endpoint:** `/api/v1/nonFictionBooks`  
+**Method:** `GET`  
+
+### **Find One Non Fiction Book**
+
+**Endpoint:** `/api/v1/nonFictionBook/{id}`  
+**Method:** `GET`  
+
+### **Updating a Non Fiction Book**
+
+**Endpoint:** `/api/v1/nonFictionBook/{id}`  
+**Method:** `PUT`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "name": " Tells of Two Cities ",
+  "description": " A Real Life Story  ",
+  "productNumber": " N-Fiction - 12 ",
+  "price":  2.45,
+  "inventory":  5
+}
+```
+
+### **Updating Only the Subject of Non Fiction Book**
+
+**Endpoint:** `/api/v1/nonFictionBook/{id}`  
+**Method:** `PATCH`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "subject":  "Story Telling"
+}
+```
+### **Deleting a Non Fiction Book**
+
+**Endpoint:** `/api/v1/nonFictionBook/{id}`  
+**Method:** `DELETE`  
+
+### **Adding Review To Non Fiction Book**
+
+**Endpoint:** `/api/v1/nonFictionBook/{id}/reviews`  
+**Method:** `POST`  
+**Headers:**
+
+- `Content-Type`: `application/json`
+- `Authorization`: `Bearer YOUR_JWT_TOKEN_HERE`
+
+**Body:**
+
+```json
+{
+  "comments": "Recommended for children during bed times",
+  "ratings": 4
+}
+```
+
+---
+
 
 ### Extra links 
 
