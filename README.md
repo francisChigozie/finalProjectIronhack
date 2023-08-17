@@ -77,23 +77,8 @@
 }
 ```
 
-**Endpoint:** `api/vi/books`  
-```
-**Method:** `GET` 
-```
-**Body:** Not needed.
-```
 
-```
-**Endpoint:** `api/vi/book/{id}`  
-```
-**Method:** `GET` 
-```
-**Body:** Not needed.
-```
-
-
-### **Extra links**
+### Extra links
 
 [Final Project Manangement Account](https://trello.com/b/SxxrLFZ9/digital-products)
 
