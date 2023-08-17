@@ -64,12 +64,13 @@
 
 ```json
 {
-  "name": " String ",
-  "description": " String ",
-  "productNumber": " String ",
-  "price":  BigDecimal,
-  "inventory":  int,
-  "review": [] 
+  "name": " Spring Book In Action ",
+  "description": " Spring Framwork that simplifies Java development.  ",
+  "productNumber": " MANNING- 0213 ",
+  "price":  28.45,
+  "inventory":  30,
+  "review": [] ,
+  "author": "Craig Walls"
 }
 ```
 
