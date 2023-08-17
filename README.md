@@ -58,7 +58,7 @@
 
 [REST API presentation with Swagger UI](http://localhost:8080/swagger-ui/index.html)
 
-[Final Project Git Hub Account](https://github.com/francisChigozie/finalProjectIronhack/new/main?readme=1)
+[Final Project Git Hub Account](https://github.com/francisChigozie/finalProjectIronhack)
 
 ### Future Work
 - Integration with a payment Provider.
