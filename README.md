@@ -51,8 +51,8 @@
 
 - *BookController* : (https://github.com/francisChigozie/finalProjectIronhack/blob/main/src/main/java/com/ironhack/finalprojectdigitalproduct/controller/BookController.java)
 
-Endpoint: *api/v1/books*
-Method : *POST*
+Endpoint: *api/v1/books
+Method : *POST
 Body : JSON Object of Book.
 
 Request Format :
@@ -68,7 +68,7 @@ Request Format :
 * "ratings" : " int ",
 * }
 * ]
-* }*
+* }
 
 
 ### Extra links
