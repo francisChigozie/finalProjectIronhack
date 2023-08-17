@@ -97,11 +97,11 @@
 
 ```json
 {
-  "name": " String ",
-  "description": " String ",
-  "productNumber": " String ",
-  "price": BigDecimal,
-  "inventory":  int,
+  "name": "Spring Framwork that simplifies Java development. ",
+  "description": " Spring Framwork that simplifies Java development.  ",
+  "productNumber": " MANNING- 0213 ",
+  "price":  28.45,
+  "inventory":  15,
   "review": [] 
 }
 ```
@@ -119,7 +119,7 @@
 
 ```json
 {
-  "price":  BigDecimal
+  "price":  19.00
 }
 ```
 ### **Deleting a Book**
