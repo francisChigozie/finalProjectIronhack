@@ -78,13 +78,18 @@
 }
 ```
 
-**Steps:**
+### **Finding All Books**
 
-1. Send a POST request to `/api/v1/books` with the provided JSON body.
+**Endpoint:** `/api/v1/books`  
+**Method:** `GET`  
+
+### **Find One Book**
+
+**Endpoint:** `/api/v1/book/{id}`  
+**Method:** `GET`  
+
 
 ---
-
-
 
 ### Extra links 
 
