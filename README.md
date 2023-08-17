@@ -53,8 +53,11 @@
 ---
 
 **Endpoint:** `api/vi/books`  
-**Method:** `POST`  
+```
+**Method:** `POST`
+```
 **Body:** JSON object of Book.
+```
 
 **Request Format:**
 
@@ -73,6 +76,35 @@
  ] 
 }
 ```
+
+## **User and Role Management Documentation**
+
+---
+
+### **Prerequisites**
+
+- Ensure you have a REST client like Postman or CURL to interact with the API.
+- Have the API server running.
+
+---
+
+### **1. Obtain a JWT Token**
+
+**Endpoint:** `api/login`  
+**Method:** `POST`  
+**Body:** JSON object containing your credentials.
+
+**Request Format:**
+
+```json
+{
+  "username": "your_username",
+  "password": "your_password"
+}
+```
+
+**Steps:**
+
 
 ### Extra links
 
