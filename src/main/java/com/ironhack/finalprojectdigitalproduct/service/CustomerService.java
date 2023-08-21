@@ -1,13 +1,9 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
-import com.ironhack.finalprojectdigitalproduct.model.products.Book;
 import com.ironhack.finalprojectdigitalproduct.model.products.Product;
 import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
-import com.ironhack.finalprojectdigitalproduct.resository.BookRepository;
 import com.ironhack.finalprojectdigitalproduct.resository.CustomerRepository;
 import com.ironhack.finalprojectdigitalproduct.resository.ProductRepository;
-import com.ironhack.finalprojectdigitalproduct.resository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -19,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,7 +60,7 @@ public class CustomerService {
         Customer customer = customerRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Password not found")
         );
-        customer.getId();
+        //customer.getId();
         customer.setPassword(password);
         customer.setUpdatedAt(customer.modifyDate());
         customerRepository.save(customer);
@@ -88,7 +83,7 @@ public class CustomerService {
         Product product = productRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "ProductToCustomer not found")
         );
-        product.getId();
+       // product.getId();
         product.addCustomer(customer);
         productRepository.save(product);
     }

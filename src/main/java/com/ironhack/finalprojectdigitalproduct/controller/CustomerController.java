@@ -1,16 +1,12 @@
 package com.ironhack.finalprojectdigitalproduct.controller;
 
-import com.ironhack.finalprojectdigitalproduct.model.products.Product;
 import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.CustomerRepository;
-import com.ironhack.finalprojectdigitalproduct.resository.ProductRepository;
 import com.ironhack.finalprojectdigitalproduct.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +18,6 @@ public class CustomerController {
     private CustomerService customerService;
     @Autowired
     private CustomerRepository customerRepository;
-    @Autowired
-    private ProductRepository repository;
 
 
     @PostMapping("/createCustomer")
@@ -48,6 +42,12 @@ public class CustomerController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void updateCustomerPWD(@PathVariable("id") Long id,@RequestParam String password) {
         customerService.updateCustomerPWD(id,password);
+    }
+
+    @PutMapping("/customers/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void updateCustomer(@PathVariable("id") Long id,@RequestBody Customer customer) {
+        customerService.updateCustomer(id,customer);
     }
 
    @PatchMapping("/customers/{id}/products")

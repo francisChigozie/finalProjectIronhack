@@ -8,17 +8,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.GenericGenerator;
 
-import java.util.UUID;
 
 @Data
 @Entity
+@AllArgsConstructor
 @DynamicUpdate
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "customer_type")
 public class Customer extends BaseEntity {
     @Id
     @Column(name = "id")
@@ -47,7 +45,8 @@ public class Customer extends BaseEntity {
     @NotEmpty(message = "Confirm password")
     private String rePassword;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST, targetEntity = Roles.class)
+    @JoinColumn(name = "role_id", referencedColumnName = "roleId",nullable = false)
     private Roles roles;
 
     @Embedded

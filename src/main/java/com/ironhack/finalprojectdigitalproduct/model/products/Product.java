@@ -1,7 +1,5 @@
 package com.ironhack.finalprojectdigitalproduct.model.products;
 
-
-import com.ironhack.finalprojectdigitalproduct.dto.reviewOnlyDto.ReviewDTO;
 import com.ironhack.finalprojectdigitalproduct.model.processing.BaseEntity;
 import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
