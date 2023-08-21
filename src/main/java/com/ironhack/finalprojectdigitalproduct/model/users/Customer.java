@@ -1,5 +1,9 @@
 package com.ironhack.finalprojectdigitalproduct.model.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ironhack.finalprojectdigitalproduct.model.ShoppingCart;
+import com.ironhack.finalprojectdigitalproduct.model.processing.BaseEntity;
+import com.ironhack.finalprojectdigitalproduct.model.products.Product;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -15,12 +19,11 @@ import java.util.UUID;
 @DynamicUpdate
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "customer_type")
-public class Customer {
+public class Customer extends BaseEntity {
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "uuidGenerator")
-    @GenericGenerator(name = "uuidGenerator", strategy = "uuid2")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotEmpty(message = "You must supply a product name")
     @Size(min = 3,message = "Name must be at least 3 characters long")
@@ -38,15 +41,14 @@ public class Customer {
     @NotEmpty(message = "Select amount of coins")
     private String selectCoin;
 
-    @Column(name = "password_hash")
-    private String passwordHash;
+    @NotEmpty(message = "Enter password")
+    private String password;
 
-    @Column(name = "password_salt")
-    private String passwordSalt;
+    @NotEmpty(message = "Confirm password")
+    private String rePassword;
 
-    @Column
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Roles roles;
 
     @Embedded
     Address currentAddress;
@@ -60,7 +62,14 @@ public class Customer {
     private Address permanentAddress;
 
     protected double minimumOrderValue;
-    //private ShoppingCart shoppingCart;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ShoppingCart shoppingCart;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
 
     public Customer(){
         //this.shoppingCart = new ShoppingCart();
@@ -79,15 +88,4 @@ public class Customer {
         this.name = name;
     }
 
-   /* public Customer(Customer originalCustomer){
-        this.name = originalCustomer.name;
-        this.birthdate = originalCustomer.birthdate;
-        this.sex = originalCustomer.sex;
-        this.minimumOrderValue = originalCustomer.minimumOrderValue;
-        //this.shoppingCart = originalCustomer.shoppingCart;
-        this.shoppingCart = new ShoppingCart(originalCustomer.shoppingCart);
-
-        // this.shoppingCart = originalCustomer.shoppingCart ==> shallow copy
-    }
-*/
 }

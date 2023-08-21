@@ -1,8 +1,7 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
-import com.ironhack.finalprojectdigitalproduct.dto.BookDTO;
-import com.ironhack.finalprojectdigitalproduct.mapper.BookMapper;
 import com.ironhack.finalprojectdigitalproduct.model.products.Book;
+import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.BookRepository;
 import com.ironhack.finalprojectdigitalproduct.resository.ReviewRepository;
@@ -56,7 +55,7 @@ public class BookService {
     }*/
 
     @Transactional
-    public ResponseEntity<Book> updateBooK(Long id, BookDTO bookDTO)
+    public ResponseEntity<Book> updateBooK(Long id, Book bookDTO)
             throws EntityNotFoundException {
         Book book =
                     bookRepository
@@ -115,6 +114,16 @@ public class BookService {
         );
         book.getId();
         book.addReview(reviewDTO);
+        bookRepository.save(book);
+    }
+
+    @Transactional
+    public void addCustomer(Long id, Customer customer) {
+        Book book = bookRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "BookToCustomer not found")
+        );
+        book.getId();
+        book.addCustomer(customer);
         bookRepository.save(book);
     }
 }

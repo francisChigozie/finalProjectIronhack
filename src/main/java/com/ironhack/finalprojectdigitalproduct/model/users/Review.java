@@ -1,17 +1,11 @@
 package com.ironhack.finalprojectdigitalproduct.model.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ironhack.finalprojectdigitalproduct.dto.BookDTO;
 import com.ironhack.finalprojectdigitalproduct.model.products.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity

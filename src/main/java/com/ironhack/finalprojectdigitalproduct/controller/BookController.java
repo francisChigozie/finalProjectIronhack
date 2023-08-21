@@ -1,6 +1,5 @@
 package com.ironhack.finalprojectdigitalproduct.controller;
 
-import com.ironhack.finalprojectdigitalproduct.dto.BookDTO;
 import com.ironhack.finalprojectdigitalproduct.dto.priceOnlyDto.BookPriceOnlyDTO;
 import com.ironhack.finalprojectdigitalproduct.model.products.Book;
 import com.ironhack.finalprojectdigitalproduct.model.products.Product;
@@ -66,7 +65,7 @@ public class BookController {
 
     @PutMapping("/books/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public ResponseEntity<Book> updateProduct(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
+    public ResponseEntity<Book> updateProduct(@PathVariable Long id, @RequestBody Book bookDTO) {
        return bookService.updateBooK(id,bookDTO);
     }
 
