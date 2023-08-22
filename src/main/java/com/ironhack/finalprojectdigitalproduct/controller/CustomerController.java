@@ -1,5 +1,6 @@
 package com.ironhack.finalprojectdigitalproduct.controller;
 
+import com.ironhack.finalprojectdigitalproduct.model.products.Product;
 import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
 import com.ironhack.finalprojectdigitalproduct.resository.CustomerRepository;
 import com.ironhack.finalprojectdigitalproduct.service.CustomerService;
@@ -52,8 +53,8 @@ public class CustomerController {
 
    @PatchMapping("/customers/{id}/products")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void addProductToCustomer(@PathVariable("id") Long id,@RequestBody Customer customer) {
-       customerService.addProductToCustomer(id, customer);
+    public void addProductToCustomer(@PathVariable("id") Long id, @RequestBody Product product) {
+       customerService.addProductToCustomer(id, product);
     }
 
     @SneakyThrows

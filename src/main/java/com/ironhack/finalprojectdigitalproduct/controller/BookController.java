@@ -3,6 +3,7 @@ package com.ironhack.finalprojectdigitalproduct.controller;
 import com.ironhack.finalprojectdigitalproduct.dto.priceOnlyDto.BookPriceOnlyDTO;
 import com.ironhack.finalprojectdigitalproduct.model.products.Book;
 import com.ironhack.finalprojectdigitalproduct.model.products.Product;
+import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.BookRepository;
 import com.ironhack.finalprojectdigitalproduct.resository.ProductRepository;
@@ -61,6 +62,12 @@ public class BookController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addReviewToBook(@PathVariable("id") Long id,@RequestBody Review reviewDTO) {
        bookService.addReview(id, reviewDTO);
+    }
+
+    @PatchMapping("/books/{id}/customers")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void addBookToCustomer(@PathVariable("id") Long id, @RequestBody Customer customer) {
+        bookService.addBookToCustomer(id, customer);
     }
 
     @PutMapping("/books/{id}")

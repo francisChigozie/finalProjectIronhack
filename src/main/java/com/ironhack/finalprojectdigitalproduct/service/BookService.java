@@ -1,9 +1,11 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
 import com.ironhack.finalprojectdigitalproduct.model.products.Book;
+import com.ironhack.finalprojectdigitalproduct.model.products.Product;
 import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.BookRepository;
+import com.ironhack.finalprojectdigitalproduct.resository.ProductRepository;
 import com.ironhack.finalprojectdigitalproduct.resository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -26,8 +28,10 @@ import java.util.Map;
 public class BookService {
     @Autowired
     private BookRepository bookRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-    public Book createNewBook (@Valid Book book){
+    public Book createNewBook(@Valid Book book) {
         return bookRepository.save(book);
     }
 
@@ -38,9 +42,9 @@ public class BookService {
         return bookMapper.toDto(book);
     }*/
 
-    public Book findById(long bookId){
+    public Book findById(long bookId) {
         return bookRepository.findById(bookId).orElseThrow(
-                ()->new ResponseStatusException(
+                () -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Book with id " + bookId + " not found.")
         );
     }
@@ -55,7 +59,7 @@ public class BookService {
     public ResponseEntity<Book> updateBooK(Long id, Book bookDTO)
             throws EntityNotFoundException {
         Book book =
-                    bookRepository
+                bookRepository
                         .findById(id)
                         .orElseThrow(
                                 () -> new EntityNotFoundException(
@@ -94,7 +98,7 @@ public class BookService {
 
     public Map<String, Boolean> deleteBook(Long id) throws Exception {
         Book book =
-                    bookRepository
+                bookRepository
                         .findById(id)
                         .orElseThrow(() -> new EntityNotFoundException("Book not found on :: " + id));
 
@@ -106,7 +110,7 @@ public class BookService {
 
     @Transactional
     public void addReview(Long id, Review reviewDTO) {
-       Book book = bookRepository.findById(id).orElseThrow(
+        Book book = bookRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "BookToReview not found")
         );
         book.getId();
@@ -114,7 +118,7 @@ public class BookService {
         bookRepository.save(book);
     }
 
-    @Transactional
+   /* @Transactional
     public void addCustomer(Long id, Customer customer) {
         Book book = bookRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "BookToCustomer not found")
@@ -122,5 +126,15 @@ public class BookService {
         book.getId();
         book.addCustomer(customer);
         bookRepository.save(book);
+    }*/
+
+    public void addBookToCustomer(Long id, Customer customer) {
+        Product product = productRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "ProductToCustomer not found")
+        );
+         product.getId();
+        product.addCustomer(customer);
+        productRepository.save(product);
     }
+
 }

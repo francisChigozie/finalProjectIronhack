@@ -79,12 +79,12 @@ public class CustomerService {
     }
 
     @Transactional
-    public void addProductToCustomer(Long id, Customer customer) {
-        Product product = productRepository.findById(id).orElseThrow(
+    public void addProductToCustomer(Long id, Product product) {
+        Customer customer = customerRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "ProductToCustomer not found")
         );
        // product.getId();
-        product.addCustomer(customer);
-        productRepository.save(product);
+        customer.setProduct(product);
+        customerRepository.save(customer);
     }
 }

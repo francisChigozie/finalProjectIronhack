@@ -51,7 +51,7 @@ public class Product extends BaseEntity {
             fetch = FetchType.LAZY)
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, orphanRemoval = true,
+    @OneToMany(mappedBy = "product",cascade = CascadeType.PERSIST, orphanRemoval = true,
             fetch = FetchType.LAZY)
     private List<Customer> customers = new ArrayList<>();
 
