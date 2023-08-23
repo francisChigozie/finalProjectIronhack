@@ -1,6 +1,6 @@
 package com.ironhack.finalprojectdigitalproduct.controller;
 
-import com.ironhack.finalprojectdigitalproduct.model.products.Product;
+import com.ironhack.finalprojectdigitalproduct.dto.onlyDto.ProductDTO;
 import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
 import com.ironhack.finalprojectdigitalproduct.resository.CustomerRepository;
 import com.ironhack.finalprojectdigitalproduct.service.CustomerService;
@@ -20,7 +20,6 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
-
     @PostMapping("/createCustomer")
     @ResponseStatus(HttpStatus.CREATED)
     public Customer createNewCustomer(@RequestBody @Valid Customer customer){
@@ -29,7 +28,7 @@ public class CustomerController {
 
     @GetMapping("/customers/{customerId}")
     @ResponseStatus(HttpStatus.OK)
-    public Customer getCustomerById(@PathVariable(name="bookId")long customerId) {
+    public Customer getCustomerById(@PathVariable(name="customerId")long customerId) {
         return customerService.findById(customerId);
     }
 
@@ -51,18 +50,35 @@ public class CustomerController {
         customerService.updateCustomer(id,customer);
     }
 
-   @PatchMapping("/customers/{id}/products")
+    @PutMapping("/customerProduct/{customerId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void addProductToCustomer(@PathVariable("id") Long id, @RequestBody Product product) {
-       customerService.addProductToCustomer(id, product);
+    public Customer addProductToCustomer(
+            @PathVariable long customerId,
+            @RequestBody ProductDTO productDTO) {
+      Customer customer = customerRepository.findById(customerId).get();
+
+      customer.addProductToCustomer(productDTO);
+      customer.setUpdatedAt(productDTO.modifyDate());
+      return customerRepository.save(customer);
     }
 
+    /*@PatchMapping("/customerCart/{customerId}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public Customer addCartToCustomer(
+            @PathVariable long customerId,
+            @RequestBody ShoppingCart shoppingCart) {
+        Customer customer = customerRepository.findById(customerId).get();
+
+        customer.addShoppingCart(shoppingCart);
+        customer.setUpdatedAt(shoppingCart.modifyDate());
+        return customerRepository.save(customer);
+    }
+*/
     @SneakyThrows
     @DeleteMapping("/customers/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Boolean> deleteCustomer(@PathVariable(name="id")long id) {
         return customerService.deleteCustomerById(id);
     }
-
 
 }

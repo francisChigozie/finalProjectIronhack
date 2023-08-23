@@ -1,6 +1,5 @@
 package com.ironhack.finalprojectdigitalproduct.model.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ironhack.finalprojectdigitalproduct.model.ShoppingCart;
 import com.ironhack.finalprojectdigitalproduct.model.processing.BaseEntity;
 import com.ironhack.finalprojectdigitalproduct.model.products.Product;
@@ -11,6 +10,11 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -21,7 +25,7 @@ public class Customer extends BaseEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long customerId;
 
     @NotEmpty(message = "You must supply a product name")
     @Size(min = 3,message = "Name must be at least 3 characters long")
@@ -62,13 +66,14 @@ public class Customer extends BaseEntity {
 
     protected double minimumOrderValue;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ShoppingCart shoppingCart;
+    @OneToMany(cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY)
+    private List<ShoppingCart> shoppingCarts = new ArrayList<>();
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product;
+
+    @OneToMany(fetch = FetchType.LAZY,targetEntity = Product.class,
+            cascade = CascadeType.ALL )
+    private List<Product> products = new ArrayList<>();
 
     public Customer(){
         //this.shoppingCart = new ShoppingCart();
@@ -87,4 +92,11 @@ public class Customer extends BaseEntity {
         this.name = name;
     }
 
+    public void addProductToCustomer(Product product){
+        products.add(product);
+    }
+
+    public void addShoppingCart(ShoppingCart shoppingCart){
+        shoppingCarts.add(shoppingCart);
+    }
 }

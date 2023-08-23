@@ -1,6 +1,5 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
-import com.ironhack.finalprojectdigitalproduct.dto.reviewOnlyDto.ReviewDTO;
 import com.ironhack.finalprojectdigitalproduct.model.products.MusicProduct;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.MusicProductRepository;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

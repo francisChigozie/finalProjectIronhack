@@ -1,7 +1,9 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
+import com.ironhack.finalprojectdigitalproduct.model.products.Book;
 import com.ironhack.finalprojectdigitalproduct.model.products.Product;
 import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
+import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.CustomerRepository;
 import com.ironhack.finalprojectdigitalproduct.resository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -13,10 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -50,7 +54,6 @@ public class CustomerService {
         customer.setName(customerDetails.getName());
         customer.setEmail(customerDetails.getEmail());
         customer.setPermanentAddress(customerDetails.getPermanentAddress());
-        customer.setProduct(customerDetails.getProduct());
         customer.setUpdatedAt(customerDetails.modifyDate());
         final Customer updatedCustomer = customerRepository.save(customer);
         return ResponseEntity.ok(updatedCustomer);
@@ -79,12 +82,18 @@ public class CustomerService {
     }
 
     @Transactional
-    public void addProductToCustomer(Long id, Product product) {
-        Customer customer = customerRepository.findById(id).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "ProductToCustomer not found")
-        );
-       // product.getId();
-        customer.setProduct(product);
-        customerRepository.save(customer);
+    public ResponseEntity<Customer> addProductToCustomer(Long id, Customer customerDetails)
+            throws EntityNotFoundException {
+        Customer customer =
+                customerRepository
+                        .findById(id)
+                        .orElseThrow(
+                                () -> new EntityNotFoundException(
+                                        "CustomerToProduct not found on :: " + id));
+
+        customer.setProducts(customerDetails.getProducts());
+        customer.setUpdatedAt(customerDetails.modifyDate());
+        final Customer updatedProduct = customerRepository.save(customer);
+        return ResponseEntity.ok(updatedProduct);
     }
 }

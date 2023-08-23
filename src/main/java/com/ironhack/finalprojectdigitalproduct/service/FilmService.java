@@ -1,6 +1,5 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
-import com.ironhack.finalprojectdigitalproduct.dto.reviewOnlyDto.ReviewDTO;
 import com.ironhack.finalprojectdigitalproduct.model.products.Film;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.FilmRepository;

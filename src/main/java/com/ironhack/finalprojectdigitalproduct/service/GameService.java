@@ -1,6 +1,5 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
-import com.ironhack.finalprojectdigitalproduct.dto.reviewOnlyDto.ReviewDTO;
 import com.ironhack.finalprojectdigitalproduct.model.products.Game;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.GameRepository;
@@ -16,8 +15,6 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @Service
 public class GameService {

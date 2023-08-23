@@ -117,24 +117,4 @@ public class BookService {
         book.addReview(reviewDTO);
         bookRepository.save(book);
     }
-
-   /* @Transactional
-    public void addCustomer(Long id, Customer customer) {
-        Book book = bookRepository.findById(id).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "BookToCustomer not found")
-        );
-        book.getId();
-        book.addCustomer(customer);
-        bookRepository.save(book);
-    }*/
-
-    public void addBookToCustomer(Long id, Customer customer) {
-        Product product = productRepository.findById(id).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "ProductToCustomer not found")
-        );
-         product.getId();
-        product.addCustomer(customer);
-        productRepository.save(product);
-    }
-
 }

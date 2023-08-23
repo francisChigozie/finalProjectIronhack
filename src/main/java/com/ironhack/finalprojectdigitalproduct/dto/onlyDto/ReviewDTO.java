@@ -1,14 +1,10 @@
-package com.ironhack.finalprojectdigitalproduct.dto.reviewOnlyDto;
+package com.ironhack.finalprojectdigitalproduct.dto.onlyDto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ironhack.finalprojectdigitalproduct.model.products.Product;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @RequiredArgsConstructor

@@ -6,6 +6,7 @@ import com.ironhack.finalprojectdigitalproduct.model.products.Product;
 import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
 import com.ironhack.finalprojectdigitalproduct.model.users.Review;
 import com.ironhack.finalprojectdigitalproduct.resository.BookRepository;
+import com.ironhack.finalprojectdigitalproduct.resository.CustomerRepository;
 import com.ironhack.finalprojectdigitalproduct.resository.ProductRepository;
 import com.ironhack.finalprojectdigitalproduct.service.BookService;
 import jakarta.validation.Valid;
@@ -26,6 +27,8 @@ public class BookController {
     private BookRepository bookRepository;
     @Autowired
     private ProductRepository repository;
+    @Autowired
+    private CustomerRepository customerRepository;
 
 
     @PostMapping("/createBook")
@@ -64,11 +67,17 @@ public class BookController {
        bookService.addReview(id, reviewDTO);
     }
 
-    @PatchMapping("/books/{id}/customers")
+    /*@PutMapping("/{productId}/customers/{customerId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void addBookToCustomer(@PathVariable("id") Long id, @RequestBody Customer customer) {
-        bookService.addBookToCustomer(id, customer);
-    }
+    public void addProductToCustomer(
+            @PathVariable("id") long customerId,
+            @PathVariable("id") long productId) {
+        Customer customer =(Customer) customerRepository.findById(customerId).get();
+        Product product =(Book) repository.findById(productId).get();
+
+        product.addCustomer(customer);
+        repository.save(product);
+    }*/
 
     @PutMapping("/books/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)

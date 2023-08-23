@@ -35,7 +35,7 @@ public class FilmController {
         return filmRepository.findAll();
     }
 
-    @GetMapping("/gameAuthor")
+    @GetMapping("/filmDirector")
     @ResponseStatus(HttpStatus.OK)
     public List<Film> getFilmByDirector(@RequestParam(defaultValue = "Holy_Wood") Optional<String> director) {
         if (director.isPresent()) {

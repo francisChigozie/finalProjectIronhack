@@ -11,9 +11,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.ManyToAny;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -51,18 +53,9 @@ public class Product extends BaseEntity {
             fetch = FetchType.LAZY)
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.PERSIST, orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    private List<Customer> customers = new ArrayList<>();
-
     public void addReview(Review review){
         reviews.add(review);
         review.setProduct(this);
-    }
-
-    public void addCustomer(Customer customer){
-        customers.add(customer);
-        customer.setProduct(this);
     }
 
     public String getDescription(){
