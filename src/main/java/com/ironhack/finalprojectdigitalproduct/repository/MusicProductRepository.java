@@ -1,4 +1,4 @@
-package com.ironhack.finalprojectdigitalproduct.resository;
+package com.ironhack.finalprojectdigitalproduct.repository;
 
 import com.ironhack.finalprojectdigitalproduct.model.products.MusicProduct;
 import org.springframework.data.jpa.repository.JpaRepository;

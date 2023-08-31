@@ -2,8 +2,8 @@ package com.ironhack.finalprojectdigitalproduct.controller;
 
 import com.ironhack.finalprojectdigitalproduct.dto.priceOnlyDto.FilmPriceOnlyDTO;
 import com.ironhack.finalprojectdigitalproduct.model.products.Film;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
-import com.ironhack.finalprojectdigitalproduct.resository.FilmRepository;
+import com.ironhack.finalprojectdigitalproduct.model.user.Review;
+import com.ironhack.finalprojectdigitalproduct.repository.FilmRepository;
 import com.ironhack.finalprojectdigitalproduct.service.FilmService;
 import jakarta.validation.Valid;
 import lombok.SneakyThrows;
@@ -16,14 +16,13 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/v1")
 public class FilmController {
-    @Autowired
-    private FilmService filmService;
-    @Autowired
-    private FilmRepository filmRepository;
+    @Autowired private FilmService filmService;
+    @Autowired private FilmRepository filmRepository;
 
 
-    @PostMapping("/createFilm")
+    @PostMapping("/film")
     @ResponseStatus(HttpStatus.CREATED)
     public Film createNewGame(@Valid @RequestBody Film film){
         return filmService.createNewFilm(film);
@@ -55,17 +54,16 @@ public class FilmController {
     public void updateFilmPrice(@PathVariable("id") Long id,@RequestBody FilmPriceOnlyDTO partialFilm) {
         filmService.updateFilmPrice(id,partialFilm.getPrice());
     }
+    @PutMapping("/films/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void updateFilm(@PathVariable Long id, @RequestBody Film film)  {
+        filmService.updateFilm(id,film);
+    }
 
     @PutMapping("/films/{id}/reviews")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addReviewToBook(@PathVariable("id") Long id,@RequestBody Review reviewDTO) {
         filmService.updateReview(id, reviewDTO);
-    }
-
-    @PutMapping("/films/{id}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void updateFilm(@PathVariable Long id, @RequestBody Film film)  {
-        filmService.updateFilm(id,film);
     }
 
     @SneakyThrows
@@ -74,5 +72,6 @@ public class FilmController {
     public Map<String, Boolean> deleteFilmById(@PathVariable(name="id")long id) {
         return filmService.deleteFilm(id);
     }
+
 
 }

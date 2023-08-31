@@ -1,6 +1,5 @@
-package com.ironhack.finalprojectdigitalproduct.resository;
+package com.ironhack.finalprojectdigitalproduct.repository;
 
-import com.ironhack.finalprojectdigitalproduct.model.products.Book;
 import com.ironhack.finalprojectdigitalproduct.model.products.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 

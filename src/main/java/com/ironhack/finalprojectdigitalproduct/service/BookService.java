@@ -1,12 +1,9 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
 import com.ironhack.finalprojectdigitalproduct.model.products.Book;
-import com.ironhack.finalprojectdigitalproduct.model.products.Product;
-import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
-import com.ironhack.finalprojectdigitalproduct.resository.BookRepository;
-import com.ironhack.finalprojectdigitalproduct.resository.ProductRepository;
-import com.ironhack.finalprojectdigitalproduct.resository.ReviewRepository;
+import com.ironhack.finalprojectdigitalproduct.model.user.Review;
+import com.ironhack.finalprojectdigitalproduct.repository.BookRepository;
+import com.ironhack.finalprojectdigitalproduct.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -35,25 +32,12 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    /*public BookDTO createNewBook (@Valid BookDTO bookDTO){
-        Book book = bookMapper.toEntity(bookDTO);
-        bookRepository.save(book);
-        log.info("Book created: " + book);
-        return bookMapper.toDto(book);
-    }*/
-
     public Book findById(long bookId) {
         return bookRepository.findById(bookId).orElseThrow(
                 () -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Book with id " + bookId + " not found.")
         );
     }
-
-   /* public List<BookDTO> getAllProducts(){
-        return (List<BookDTO>) bookRepository.
-                findAll().stream()
-                .map(bookMapper::toDto).toList();
-    }*/
 
     @Transactional
     public ResponseEntity<Book> updateBooK(Long id, Book bookDTO)
@@ -72,19 +56,6 @@ public class BookService {
         final Book updatedBook = bookRepository.save(book);
         return ResponseEntity.ok(updatedBook);
     }
-    /*public BookDTO updateBook(Long id, BookDTO bookDTO) {
-        if(!bookRepository.existsById(id)) {
-            throw new EntityNotFoundException("No book with id " + id);
-        }
-        Book entity = bookMapper.toEntity(bookDTO);
-        entity.setId(id); // no funny business with ids included in RequestBody
-        entity.setAuthor(bookDTO.getAuthor());
-        entity.setPrice(bookDTO.getPrice());
-        entity.setInventory(bookDTO.getInventory());
-        entity.setUpdatedAt(bookDTO.modifyDate());
-        bookRepository.save(entity);
-        return bookMapper.toDto(entity);
-    }*/
 
     public void updatePrice(Long id, BigDecimal price) {
         Book book = bookRepository.findById(id).orElseThrow(

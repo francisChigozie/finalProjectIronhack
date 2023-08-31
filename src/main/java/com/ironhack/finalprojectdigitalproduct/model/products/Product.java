@@ -1,8 +1,7 @@
 package com.ironhack.finalprojectdigitalproduct.model.products;
 
 import com.ironhack.finalprojectdigitalproduct.model.processing.BaseEntity;
-import com.ironhack.finalprojectdigitalproduct.model.users.Customer;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
+import com.ironhack.finalprojectdigitalproduct.model.user.Review;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotEmpty;
@@ -11,11 +10,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.ManyToAny;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Data

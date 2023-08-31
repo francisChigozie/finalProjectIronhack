@@ -1,4 +1,4 @@
-package com.ironhack.finalprojectdigitalproduct.model.users;
+package com.ironhack.finalprojectdigitalproduct.model.user;
 
 import jakarta.persistence.Embeddable;
 import lombok.Data;

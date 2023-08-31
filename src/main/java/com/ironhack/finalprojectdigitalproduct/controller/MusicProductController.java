@@ -1,9 +1,8 @@
 package com.ironhack.finalprojectdigitalproduct.controller;
 
 import com.ironhack.finalprojectdigitalproduct.model.products.MusicProduct;
-import com.ironhack.finalprojectdigitalproduct.model.products.NonFictionBook;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
-import com.ironhack.finalprojectdigitalproduct.resository.MusicProductRepository;
+import com.ironhack.finalprojectdigitalproduct.model.user.Review;
+import com.ironhack.finalprojectdigitalproduct.repository.MusicProductRepository;
 import com.ironhack.finalprojectdigitalproduct.service.MusicProductService;
 import jakarta.validation.Valid;
 import lombok.SneakyThrows;
@@ -16,14 +15,13 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/v1")
 public class MusicProductController {
-    @Autowired
-    private MusicProductService musicProductService;
-    @Autowired
-    private MusicProductRepository musicProductRepository;
+    @Autowired private MusicProductService musicProductService;
+    @Autowired private MusicProductRepository musicProductRepository;
 
 
-    @PostMapping("/createMusicProduct")
+    @PostMapping("/musicProduct")
     @ResponseStatus(HttpStatus.CREATED)
     public MusicProduct createNewProduct(@Valid @RequestBody MusicProduct musicProduct){
         return musicProductService.createNewMusicProduct(musicProduct);
@@ -49,11 +47,15 @@ public class MusicProductController {
     public Optional<MusicProduct> getProductById(@PathVariable(name="id")long id) {
         return musicProductRepository.findById(id);
     }
-
     @PatchMapping("/musicProduct/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void partialUpdateProductAndPerformer(@PathVariable("id") Long id,@RequestBody MusicProduct musicPerformer) {
         musicProductService.updatePerformer(id, musicPerformer.getName(),musicPerformer.getPerformer());
+    }
+    @PutMapping("/musicProduct/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void updateProduct(@PathVariable Long id, @RequestBody MusicProduct musicProduct)  {
+        musicProductService.updateMusicProduct(id,musicProduct);
     }
 
     @PutMapping("/musicProducts/{id}/reviews")
@@ -62,16 +64,10 @@ public class MusicProductController {
         musicProductService.updateReview(id, review);
     }
 
-    @PutMapping("/musicProduct/{id}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void updateProduct(@PathVariable Long id, @RequestBody MusicProduct musicProduct)  {
-        musicProductService.updateMusicProduct(id,musicProduct);
-    }
-
     @SneakyThrows
     @DeleteMapping("/musicProduct/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Map<String, Boolean> deleteProductById(@PathVariable(name="id")long id) {
+    public Map<String, Boolean> deleteMusicProductById(@PathVariable(name="id")long id) {
         return musicProductService.deleteMusicProduct(id);
     }
 

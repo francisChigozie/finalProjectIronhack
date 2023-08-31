@@ -1,4 +1,4 @@
-package com.ironhack.finalprojectdigitalproduct.model.users;
+package com.ironhack.finalprojectdigitalproduct.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ironhack.finalprojectdigitalproduct.model.products.*;

@@ -1,8 +1,10 @@
 package com.ironhack.finalprojectdigitalproduct.controller;
 
 import com.ironhack.finalprojectdigitalproduct.model.products.NonFictionBook;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
-import com.ironhack.finalprojectdigitalproduct.resository.NonFictionBookRepository;
+import com.ironhack.finalprojectdigitalproduct.model.products.Product;
+import com.ironhack.finalprojectdigitalproduct.model.user.Review;
+import com.ironhack.finalprojectdigitalproduct.repository.NonFictionBookRepository;
+import com.ironhack.finalprojectdigitalproduct.repository.ProductRepository;
 import com.ironhack.finalprojectdigitalproduct.service.NonFictionBookService;
 import jakarta.validation.Valid;
 import lombok.SneakyThrows;
@@ -13,17 +15,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+@RequestMapping("/api/v1")
 public class NonFictionBookController {
-    @Autowired
-    private NonFictionBookService nonFictionBookService;
-    @Autowired
-    private NonFictionBookRepository nonFictionBookRepository;
+    @Autowired private NonFictionBookService nonFictionBookService;
+    @Autowired private NonFictionBookRepository nonFictionBookRepository;
+    @Autowired private ProductRepository repository;
 
-
-    @PostMapping("/addNonFictionBook")
+    @PostMapping("/nonFictionBook")
     @ResponseStatus(HttpStatus.CREATED)
     public NonFictionBook createNewBook(@Valid @RequestBody NonFictionBook nonFictionBook){
         return nonFictionBookService.addNewNonFictionBook(nonFictionBook);
+    }
+
+    @GetMapping("/products")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Product> getAllProducts() {
+        return repository.findAll();
     }
 
     @GetMapping("/nonFictionBooks")
@@ -47,28 +54,25 @@ public class NonFictionBookController {
         return nonFictionBookService.findById(nonFictionId);
     }
 
-    @PatchMapping("/nonFictionBooks/{id}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void partialUpdateProductAndSubject(@PathVariable("id") Long id,@RequestBody NonFictionBook nonFictionBook) {
-        nonFictionBookService.updateProductNumberAndSubject(id, nonFictionBook.getProductNumber(),nonFictionBook.getSubject());
-    }
-
     @PutMapping("/nonFictionBook/{id}/reviews")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addReviewToBook(@PathVariable("id") Long id,@RequestBody Review reviewDTO) {
         nonFictionBookService.updateReview(id, reviewDTO);
     }
-
+    @PatchMapping("/nonFictionBooks/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void partialUpdateProductAndSubject(@PathVariable("id") Long id,@RequestBody NonFictionBook nonFictionBook) {
+        nonFictionBookService.updateProductNumberAndSubject(id, nonFictionBook.getProductNumber(),nonFictionBook.getSubject());
+    }
     @PutMapping("/nonFictionBooks/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void updateProduct(@PathVariable Long id, @RequestBody NonFictionBook nonFictionBook)  {
         nonFictionBookService.updateNonFictionBook(id,nonFictionBook);
     }
-
     @SneakyThrows
     @DeleteMapping("/nonFictionBooks/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Map<String, Boolean> deleteProductById(@PathVariable(name="id")long id) {
+    public Map<String, Boolean> deleteNonFictionBookById(@PathVariable(name="id")long id) {
         return nonFictionBookService.deleteBook(id);
     }
 

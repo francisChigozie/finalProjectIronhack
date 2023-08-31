@@ -1,9 +1,8 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
-import com.ironhack.finalprojectdigitalproduct.model.products.MusicProduct;
 import com.ironhack.finalprojectdigitalproduct.model.products.NonFictionBook;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
-import com.ironhack.finalprojectdigitalproduct.resository.NonFictionBookRepository;
+import com.ironhack.finalprojectdigitalproduct.model.user.Review;
+import com.ironhack.finalprojectdigitalproduct.repository.NonFictionBookRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service

@@ -1,4 +1,4 @@
-package com.ironhack.finalprojectdigitalproduct.model.users;
+package com.ironhack.finalprojectdigitalproduct.model.user;
 
 import com.ironhack.finalprojectdigitalproduct.model.ShoppingCart;
 import com.ironhack.finalprojectdigitalproduct.model.processing.BaseEntity;
@@ -9,30 +9,39 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
 @Data
-@Entity
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity
 @DynamicUpdate
-public class Customer extends BaseEntity {
+@Table(name = "_user")
+public class User extends BaseEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
+    private Long userId;
 
-    @NotEmpty(message = "You must supply a product name")
+    @NotEmpty(message = "Enter your name")
     @Size(min = 3,message = "Name must be at least 3 characters long")
     private String name;
 
+    @NotEmpty(message = "Enter username")
+    @Size(min = 3,message = "Name must be at least 3 characters long")
+    private String username;
+
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message = "Invalid email format")
     private String email;
+
+    @NotEmpty(message = "Enter password")
+    private String password;
 
     @NotEmpty(message = "Birth Date Must not be Empty")
     private String birthdate;
@@ -43,15 +52,9 @@ public class Customer extends BaseEntity {
     @NotEmpty(message = "Select amount of coins")
     private String selectCoin;
 
-    @NotEmpty(message = "Enter password")
-    private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> roles = new ArrayList<>();
 
-    @NotEmpty(message = "Confirm password")
-    private String rePassword;
-
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST, targetEntity = Roles.class)
-    @JoinColumn(name = "role_id", referencedColumnName = "roleId",nullable = false)
-    private Roles roles;
 
     @Embedded
     Address currentAddress;
@@ -75,22 +78,19 @@ public class Customer extends BaseEntity {
             cascade = CascadeType.ALL )
     private List<Product> products = new ArrayList<>();
 
-    public Customer(){
-        //this.shoppingCart = new ShoppingCart();
-        this.minimumOrderValue = 10.0;
 
-    }
-
-    public Customer(String name, String email,String selectCoin) {
+    public User(String name, String username, String email, String password, String birthdate,
+                String sex, String selectCoin,Collection<Role> roles) {
         this.name = name;
+        this.username = username;
         this.email = email;
+        this.password = password;
+        this.birthdate = birthdate;
+        this.sex = sex;
         this.selectCoin = selectCoin;
+        this.roles = roles;
     }
 
-    public Customer(String name){
-        this();
-        this.name = name;
-    }
 
     public void addProductToCustomer(Product product){
         products.add(product);
@@ -99,4 +99,5 @@ public class Customer extends BaseEntity {
     public void addShoppingCart(ShoppingCart shoppingCart){
         shoppingCarts.add(shoppingCart);
     }
+
 }

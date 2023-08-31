@@ -1,8 +1,8 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
 import com.ironhack.finalprojectdigitalproduct.model.products.Game;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
-import com.ironhack.finalprojectdigitalproduct.resository.GameRepository;
+import com.ironhack.finalprojectdigitalproduct.model.user.Review;
+import com.ironhack.finalprojectdigitalproduct.repository.GameRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

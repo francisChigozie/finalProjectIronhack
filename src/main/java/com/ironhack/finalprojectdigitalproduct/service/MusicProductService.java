@@ -1,8 +1,8 @@
 package com.ironhack.finalprojectdigitalproduct.service;
 
 import com.ironhack.finalprojectdigitalproduct.model.products.MusicProduct;
-import com.ironhack.finalprojectdigitalproduct.model.users.Review;
-import com.ironhack.finalprojectdigitalproduct.resository.MusicProductRepository;
+import com.ironhack.finalprojectdigitalproduct.model.user.Review;
+import com.ironhack.finalprojectdigitalproduct.repository.MusicProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
