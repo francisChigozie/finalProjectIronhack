@@ -40,7 +40,7 @@ public class NonFictionBookService {
                         .orElseThrow(() -> new EntityNotFoundException("Non-Fiction Book not found on :: " + id));
 
         nonFictionBook.setName(nonFictionDetails.getName());
-        nonFictionBook.setDescription(nonFictionDetails.getDescription());
+        nonFictionBook.setDescription(nonFictionDetails.getBookDescriptions());
         nonFictionBook.setAuthor(nonFictionDetails.getAuthor());
         nonFictionBook.setSubject(nonFictionDetails.getSubject());
         nonFictionBook.setUpdatedAt(nonFictionBook.modifyDate());

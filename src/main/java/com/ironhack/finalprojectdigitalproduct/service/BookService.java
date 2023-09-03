@@ -25,8 +25,6 @@ import java.util.Map;
 public class BookService {
     @Autowired
     private BookRepository bookRepository;
-    @Autowired
-    private ProductRepository productRepository;
 
     public Book createNewBook(@Valid Book book) {
         return bookRepository.save(book);

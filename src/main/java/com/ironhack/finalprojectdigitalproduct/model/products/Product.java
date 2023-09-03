@@ -50,12 +50,13 @@ public class Product extends BaseEntity {
             fetch = FetchType.LAZY)
     private List<Review> reviews = new ArrayList<>();
 
+
     public void addReview(Review review){
         reviews.add(review);
         review.setProduct(this);
     }
 
-    public String getDescription(){
+    public String getBookDescriptions(){
         return this.productNumber + ":"
                 + this.price + ";"
                 + this.name;

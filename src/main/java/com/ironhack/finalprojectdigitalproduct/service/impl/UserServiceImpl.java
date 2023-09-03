@@ -154,4 +154,8 @@ public class UserServiceImpl implements UserServiceInterface, UserDetailsService
         return ResponseEntity.ok(updatedProduct);
     }
 
+    public void deleteAll(){
+        userRepository.deleteAll();
+    }
+
 }

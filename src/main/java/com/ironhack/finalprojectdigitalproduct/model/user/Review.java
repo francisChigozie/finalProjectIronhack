@@ -23,4 +23,6 @@ public class Review {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
+    public Review(String anExcitingBookToRead, int i) {
+    }
 }
