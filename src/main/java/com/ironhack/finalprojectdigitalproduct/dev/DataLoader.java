@@ -1,6 +1,5 @@
 package com.ironhack.finalprojectdigitalproduct.dev;
 
-import com.ironhack.finalprojectdigitalproduct.model.user.Customer;
 import com.ironhack.finalprojectdigitalproduct.model.user.Role;
 import com.ironhack.finalprojectdigitalproduct.model.user.User;
 import com.ironhack.finalprojectdigitalproduct.service.impl.UserServiceImpl;

@@ -3,7 +3,6 @@ package com.ironhack.finalprojectdigitalproduct.service;
 import com.ironhack.finalprojectdigitalproduct.model.products.Book;
 import com.ironhack.finalprojectdigitalproduct.model.user.Review;
 import com.ironhack.finalprojectdigitalproduct.repository.BookRepository;
-import com.ironhack.finalprojectdigitalproduct.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
