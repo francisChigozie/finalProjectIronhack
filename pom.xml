@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ironhack.finalprojectdigitalproduct</groupId>
-    <artifactId>finalProjectDigitalProduct</artifactId>
+    <artifactId>projectDigitalProduct</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>finalProjectDigitalProduct</name>
     <description>finalProjectDigitalProduct</description>
