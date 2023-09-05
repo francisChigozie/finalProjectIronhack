@@ -628,14 +628,19 @@
 
 ### Resources
 ```
-spring.datasource.url=jdbc:mysql://localhost:3306/db_digitalproducts
-spring.datasource.username=ironhacker
-spring.datasource.password=1r0nh4ck3r
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=${db_url}
+spring.datasource.username=${db_username}
+spring.datasource.password=${db_password}
+
 
 #just for learning / developing
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+
+
+server.error.include-stacktrace=never
 
 spring.profiles.active=dev
 ```
